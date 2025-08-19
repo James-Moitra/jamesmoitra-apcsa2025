@@ -3,6 +3,7 @@ import kareltherobot.*;
 
 
 public class Diamond implements Directions{
+//add a port completed 
 
     public static void main(String[] args) {
 
