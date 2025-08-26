@@ -57,6 +57,9 @@ class Math {
 
 
     //All multiples of 3 from 1 to 100
+    for (int b = 0; b <= 100; b += 3){
+      System.out.print(b + " ");
+    }
 
 
 
