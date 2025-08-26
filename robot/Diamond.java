@@ -30,6 +30,6 @@ public class Diamond implements Directions{
 
         // done with the line, now on the curve
         // rob.turnLeft();
-
+ rob.move();
     }
 }
