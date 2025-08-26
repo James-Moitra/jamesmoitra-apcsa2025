@@ -50,6 +50,9 @@ class Math {
     //Create codes that will print the following:
 
     //Odd integers from 1 to 100, inclusive of both
+     for (int i = 1;  i <= 100; i += 2){ 
+      System.out.print(i + " ");
+     }
 
 
 
@@ -60,7 +63,7 @@ class Math {
 
     //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
   }
- for (int i = 1;  i >= 100;; i += 2){
-  System.out.print( i + " ");
+
+ 
  }
-}
+
