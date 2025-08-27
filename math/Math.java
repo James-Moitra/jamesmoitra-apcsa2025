@@ -61,7 +61,7 @@ class Math {
       System.out.print(b + " ");
     }
 
-
+//1000 code
     for (int a = 1000; a >= 0; a -= 10){
       System.out.print(a + " ");
     }
