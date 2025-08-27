@@ -51,19 +51,19 @@ class Math {
 
     //Odd integers from 1 to 100, inclusive of both
      for (int i = 1;  i <= 100; i += 2){ 
-      System.out.print(i + " ");
+      System.out.println(i + " ");
      }
-
+System.out.println("Next");
 
 
     //All multiples of 3 from 1 to 100
     for (int b = 3; b <= 100; b += 3){
-      System.out.print(b + " ");
+      System.out.println(b + " ");
     }
-
+System.out.println("Next");
 //1000 code
     for (int a = 1000; a >= 0; a -= 10){
-      System.out.print(a + " ");
+      System.out.println(a + " ");
     }
 
 
