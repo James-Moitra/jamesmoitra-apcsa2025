@@ -57,15 +57,21 @@ class Math {
 
 
     //All multiples of 3 from 1 to 100
-    for (int b = 0; b <= 100; b += 3){
+    for (int b = 3; b <= 100; b += 3){
       System.out.print(b + " ");
     }
 
 
+    for (int a = 1000; a >= 0; a -= 10){
+      System.out.print(a + " ");
+    }
 
 
-    //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
+
+   
+   //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
   }
+
 
  
  }
