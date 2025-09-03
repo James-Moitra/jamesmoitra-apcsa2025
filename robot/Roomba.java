@@ -35,24 +35,17 @@ public class Roomba implements Directions {
 		 * and cleans up all piles of beepers. Think about ways you can break this
 		 * large, complex task into smaller, easier to solve problems.
 		 */
-		Robot roomba = new Robot(7,6,South,2);
+		Robot roomba = new Robot(7,6,South,0);
 		
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
-		roomba.move();
-		roomba.turnLeft();
-		roomba.move();
-		roomba.move();
-		roomba.pickBeeper();
-		roomba.move();
-		roomba.pickBeeper();
-		roomba.move();
-		roomba.move();
-		roomba.turnLeft();
-		roomba.move();
-		roomba.pickBeeper();
-		roomba.move();
-		roomba.pickBeeper();
+
+		While(roomba.frontIsClear);
+			roomba.move();
+			While(roomba.nextToABeeper());
+			roomba.pickBeeper();
+	
+	
 
 
 		int totalBeepers = 0; // Need to move this somewhere else.
