@@ -26,24 +26,43 @@ public class Roomba implements Directions {
 
 		// A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
         // Make sure it starts at startX and startY location.
-
+		World.setDelay(10);
 		World.readWorld(worldName);
 		World.setVisible(true);
-
+		roomba = new Robot(startX,startY,East,0);
 
 		/** This section will have all the logic that takes the Robot to every location
 		 * and cleans up all piles of beepers. Think about ways you can break this
 		 * large, complex task into smaller, easier to solve problems.
 		 */
-		Robot roomba = new Robot(7,6,South,0);
-		
-		// the line below causes a null pointer exception
-		// what is that and why are we getting it?
-
-		While(roomba.frontIsClear);
-			roomba.move();
-			While(roomba.nextToABeeper());
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.frontIsClear();
+		roomba.turnLeft();
+	while(roomba.nextToABeeper()){
+		roomba.pickBeeper();
+		totalBeepers++;
+	}
+		}
+	private void frontIsClear() {
+		roomba.move();
+		while(roomba.nextToABeeper()){
 			roomba.pickBeeper();
+			totalBeepers++;
+		}
+		}
+	}
+
+
+
+
+	
+
+
 	
 	
 
