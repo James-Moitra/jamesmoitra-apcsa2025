@@ -8,7 +8,7 @@ public class Roomba implements Directions {
 public static void main(String[] args) {
 // LEAVE THIS ALONE!!!!!!
 String worldName = "robot/basicRoom.wld";
-World.setDelay(20);
+World.setDelay(1);
 Roomba cleaner = new Roomba();
 int totalBeepers = cleaner.cleanRoom(worldName, 7, 7);
 System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
@@ -35,6 +35,53 @@ while(roomba.nextToABeeper()){
 roomba.pickBeeper();
 }
 }
+roomba.turnLeft();
+roomba.move();
+roomba.turnLeft();
+
+while(roomba.frontIsClear()){
+roomba.move();
+while(roomba.nextToABeeper()){
+roomba.pickBeeper();
+}
+}
+
+turnRight(roomba);
+roomba.move();
+turnRight(roomba);
+
+while(roomba.frontIsClear()){
+roomba.move();
+while(roomba.nextToABeeper()){
+roomba.pickBeeper();
+}
+}
+
+roomba.turnLeft();
+roomba.move();
+roomba.turnLeft();
+
+while(roomba.frontIsClear()){
+roomba.move();
+while(roomba.nextToABeeper()){
+roomba.pickBeeper();
+}
+}
+
+turnRight(roomba);
+roomba.move();
+turnRight(roomba);
+
+while(roomba.frontIsClear()){
+roomba.move();
+while(roomba.nextToABeeper()){
+roomba.pickBeeper();
+//pile size
+for ( int 1 = 0)
+ 
+}
+}
+
 
 
 /** This section will have all the logic that takes the Robot to every location
@@ -46,10 +93,13 @@ roomba.pickBeeper();
 // what is that and why are we getting it?
 
 
-int totalBeepers = 20; // Need to move this somewhere else.
+int totalBeepers = 20;
+
+return totalBeepers;}
+
+// Need to move this somewhere else.
 // This method should return the total number of beepers cleaned up.
-return totalBeepers;
-}
+
 
 public static void turnRight(Robot roomba){
 roomba.turnLeft();
@@ -57,3 +107,7 @@ roomba.turnLeft();
 roomba.turnLeft();
 }
 }
+
+
+
+
