@@ -11,11 +11,13 @@ public class Roomba implements Directions {
         Roomba cleaner = new Roomba();
         int totalBeepers = cleaner.cleanRoom(worldName, 7, 7);
         System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
+          System.out.println("The total area is " + (totalArea += 2 ) + " units");
     }
 
     // declared here so it is visible in all the methods!
     private Robot roomba;
     private int totalBeepers = 0;
+    static int totalArea = 0;
 
     public int cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
@@ -37,6 +39,7 @@ public class Roomba implements Directions {
         while (roomba.frontIsClear()) {
             cleanCell();
             roomba.move();
+            totalArea += 1;
         }
         cleanCell();
     }
@@ -44,7 +47,7 @@ public class Roomba implements Directions {
     private void cleanCell() {
         while (roomba.nextToABeeper()) {
             roomba.pickBeeper();
-            totalBeepers++;
+            totalBeepers += 1;
         }
     }
 
@@ -53,12 +56,14 @@ public class Roomba implements Directions {
             roomba.turnLeft();
             if (roomba.frontIsClear()) {
                 roomba.move();
+                totalArea += 1;
             }
             roomba.turnLeft();
         } else {
             turnRight(roomba);
             if (roomba.frontIsClear()) {
                 roomba.move();
+                totalArea += 1;
             }
             turnRight(roomba);
         }
@@ -87,4 +92,6 @@ public class Roomba implements Directions {
     public static void turnLeft(Robot roomba) {
         roomba.turnLeft();
     }
+
+
 }
