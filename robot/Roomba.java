@@ -22,6 +22,15 @@ private Robot roomba;
 
 public int cleanRoom(String worldName, int startX, int startY) {
 
+
+public class Roomba implents Directions {
+
+}
+int totalBeepers = 0;
+int largestPileLocationX = 0;
+int largestPileLocationY = 0;
+int 
+
 // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
 // Make sure it starts at startX and startY location.
 
@@ -45,7 +54,6 @@ while(roomba.nextToABeeper()){
 roomba.pickBeeper();
 }
 }
-
 turnRight(roomba);
 roomba.move();
 turnRight(roomba);
@@ -77,7 +85,6 @@ roomba.move();
 while(roomba.nextToABeeper()){
 roomba.pickBeeper();
 //pile size
-for ( int 1 = 0)
  
 }
 }
