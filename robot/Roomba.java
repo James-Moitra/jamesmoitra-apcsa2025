@@ -11,7 +11,7 @@ public class Roomba implements Directions {
         Roomba cleaner = new Roomba();
         int totalBeepers = cleaner.cleanRoom(worldName, 7, 7);
         System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
-        System.out.println("The total area is " + (cleaner.totalArea) + " units");
+        System.out.println("The total area is " + (cleaner.totalArea+2) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers.");
     }
 
