@@ -9,10 +9,11 @@ public class Roomba implements Directions {
         String worldName = "robot/basicRoom.wld";
         World.setDelay(1);
         Roomba cleaner = new Roomba();
-        int totalBeepers = cleaner.cleanRoom(worldName, 7, 7);
-        System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
+        cleaner.cleanRoom(worldName, 7, 7);
+        System.out.println("Roomba cleaned up a total of " + cleaner.totalBeepers + " beepers.");
         System.out.println("The total area is " + (cleaner.totalArea+2) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers.");
+        System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
     }
 
     // declared here so it is visible in all the methods!
@@ -20,8 +21,9 @@ public class Roomba implements Directions {
     private int totalBeepers = 0;
     public int totalArea = 0;
     private int largestPile = 0;
+    private int numberOfPiles = 0;
 
-    public int cleanRoom(String worldName, int startX, int startY) {
+    public void cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
         // Make sure it starts at startX and startY location.
         World.readWorld(worldName);
@@ -33,8 +35,6 @@ public class Roomba implements Directions {
             moveToNextRow();
             cleanRow();
         }
-
-        return totalBeepers;
     }
 
     private void cleanRow() {
@@ -53,8 +53,11 @@ public class Roomba implements Directions {
             totalBeepers += 1;
             pileSize += 1;
         }
-        if (pileSize > largestPile) {
-            largestPile = pileSize;
+        if (pileSize > 0) {
+            numberOfPiles += 1;
+            if (pileSize > largestPile) {
+                largestPile = pileSize;
+            }
         }
     }
 
@@ -96,6 +99,10 @@ public class Roomba implements Directions {
         roomba.turnLeft();
     }
 
-
-
+    public double getAveragePileSize() {
+        if (numberOfPiles == 0) {
+            return 0;
+        }
+        return (double) totalBeepers / numberOfPiles;
+    }
 }
