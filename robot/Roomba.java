@@ -6,15 +6,15 @@ public class Roomba implements Directions {
 
     // Main method to make this self-contained
     public static void main(String[] args) {
-        String worldName = "robot/basicRoom.wld";
-        World.setDelay(1);
+        String worldName = "robot/finalTestWorld2024.wld";
+        World.setDelay(0);
         Roomba cleaner = new Roomba();
-        cleaner.cleanRoom(worldName, 7, 7);
+        cleaner.cleanRoom(worldName, 26, 101);
         System.out.println("Roomba cleaned up a total of " + cleaner.totalBeepers + " beepers.");
-        System.out.println("The total area is " + (cleaner.totalArea - 3) + " units");
+        System.out.println("The total area is " + (cleaner.totalArea-173) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers at location (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ").");
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
-        System.out.println("The percentage of area with piles is " + cleaner.percentdirty() + "%");
+        System.out.println("The percentage dirty is " + cleaner.percentdirty() + "%");
        System.out.println("The location of the largest pile is (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ")");
     }
 
@@ -32,9 +32,11 @@ public class Roomba implements Directions {
     public void cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
         // Make sure it starts at startX and startY location.
+        
+    
         World.readWorld(worldName);
         World.setVisible(true);
-        roomba = new Robot(startX, startY, East, 0);
+        roomba = new Robot(26, 101, East, 0);
         x = startX;
         y = startY;
 
