@@ -11,18 +11,23 @@ public class Roomba implements Directions {
         Roomba cleaner = new Roomba();
         cleaner.cleanRoom(worldName, 7, 7);
         System.out.println("Roomba cleaned up a total of " + cleaner.totalBeepers + " beepers.");
-        System.out.println("The total area is " + (cleaner.totalArea) + " units");
-        System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers.");
+        System.out.println("The total area is " + (cleaner.totalArea - 3) + " units");
+        System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers at location (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ").");
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
         System.out.println("The percentage of area with piles is " + cleaner.percentdirty() + "%");
+       System.out.println("The location of the largest pile is (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ")");
     }
 
     // declared here so it is visible in all the methods!
     private Robot roomba;
     private int totalBeepers = 0;
-    public int totalArea = 0; // changed to 0
+    public int totalArea = 0;
     private int largestPile = 0;
+    public int largestPileX = 0;
+    public int largestPileY = 0;
     private int numberOfPiles = 0;
+    private int x = 0;
+    private int y = 0;
 
     public void cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
@@ -30,6 +35,8 @@ public class Roomba implements Directions {
         World.readWorld(worldName);
         World.setVisible(true);
         roomba = new Robot(startX, startY, East, 0);
+        x = startX;
+        y = startY;
 
         cleanRow();
         while (roomba.frontIsClear() || canMoveUp()) {
@@ -42,6 +49,7 @@ public class Roomba implements Directions {
         while (roomba.frontIsClear()) {
             cleanCell();
             roomba.move();
+            x += 1;
             totalArea += 1;
         }
         cleanCell();
@@ -59,6 +67,8 @@ public class Roomba implements Directions {
             numberOfPiles += 1;
             if (pileSize > largestPile) {
                 largestPile = pileSize;
+                largestPileX = x;
+                largestPileY = y;
             }
         }
     }
@@ -68,6 +78,7 @@ public class Roomba implements Directions {
             roomba.turnLeft();
             if (roomba.frontIsClear()) {
                 roomba.move();
+                y += 1;
                 totalArea += 1;
             }
             roomba.turnLeft();
@@ -75,10 +86,12 @@ public class Roomba implements Directions {
             turnRight(roomba);
             if (roomba.frontIsClear()) {
                 roomba.move();
+                y += 1;
                 totalArea += 1;
             }
             turnRight(roomba);
         }
+        x = getX();
     }
 
     private boolean canMoveUp() {
@@ -99,6 +112,14 @@ public class Roomba implements Directions {
         roomba.turnLeft();
         roomba.turnLeft();
         roomba.turnLeft();
+    }
+
+    private int getX() {
+        return x;
+    }
+
+    private int getY() {
+        return y;
     }
 
     public double getAveragePileSize() {
