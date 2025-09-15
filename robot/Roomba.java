@@ -11,19 +11,18 @@ public class Roomba implements Directions {
         Roomba cleaner = new Roomba();
         cleaner.cleanRoom(worldName, 7, 7);
         System.out.println("Roomba cleaned up a total of " + cleaner.totalBeepers + " beepers.");
-        System.out.println("The total area is " + (cleaner.totalArea+2) + " units");
+        System.out.println("The total area is " + (cleaner.totalArea) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers.");
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
-        System.out.println(cleaner.percentdirty);
+        System.out.println("The percentage of area with piles is " + cleaner.percentdirty() + "%");
     }
 
     // declared here so it is visible in all the methods!
     private Robot roomba;
     private int totalBeepers = 0;
-    public int totalArea = 0;
+    public int totalArea = 0; // changed to 0
     private int largestPile = 0;
     private int numberOfPiles = 0;
-    private int percentdirty = (numberOfPiles/totalArea)*100;
 
     public void cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
@@ -46,6 +45,7 @@ public class Roomba implements Directions {
             totalArea += 1;
         }
         cleanCell();
+        totalArea += 1; // increment totalArea after cleaning the last cell
     }
 
     private void cleanCell() {
@@ -106,5 +106,12 @@ public class Roomba implements Directions {
             return 0;
         }
         return (double) totalBeepers / numberOfPiles;
+    }
+
+    public double percentdirty() {
+        if (totalArea == 0) {
+            return 0;
+        }
+        return ((double) numberOfPiles / totalArea) * 100;
     }
 }
