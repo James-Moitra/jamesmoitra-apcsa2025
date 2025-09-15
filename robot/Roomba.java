@@ -11,7 +11,7 @@ public class Roomba implements Directions {
         Roomba cleaner = new Roomba();
         cleaner.cleanRoom(worldName, 26, 101);
         System.out.println("Roomba cleaned up a total of " + cleaner.totalBeepers + " beepers.");
-        System.out.println("The total area is " + (cleaner.totalArea-173) + " units");
+        System.out.println("The total area is " + (cleaner.totalArea) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers at location (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ").");
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
         System.out.println("The percentage dirty is " + cleaner.percentdirty() + "%");
@@ -21,7 +21,7 @@ public class Roomba implements Directions {
     // declared here so it is visible in all the methods!
     private Robot roomba;
     private int totalBeepers = 0;
-    public int totalArea = 0;
+    public int totalArea = 1;
     private int largestPile = 0;
     public int largestPileX = 0;
     public int largestPileY = 0;
@@ -55,7 +55,7 @@ public class Roomba implements Directions {
             totalArea += 1;
         }
         cleanCell();
-        totalArea += 1; // increment totalArea after cleaning the last cell
+         
     }
 
     private void cleanCell() {
