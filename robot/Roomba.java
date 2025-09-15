@@ -14,6 +14,7 @@ public class Roomba implements Directions {
         System.out.println("The total area is " + (cleaner.totalArea+2) + " units");
         System.out.println("The largest pile of beepers was " + cleaner.largestPile + " beepers.");
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
+        System.out.println(cleaner.percentdirty);
     }
 
     // declared here so it is visible in all the methods!
@@ -22,6 +23,7 @@ public class Roomba implements Directions {
     public int totalArea = 0;
     private int largestPile = 0;
     private int numberOfPiles = 0;
+    private int percentdirty = (numberOfPiles/totalArea)*100;
 
     public void cleanRoom(String worldName, int startX, int startY) {
         // A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
