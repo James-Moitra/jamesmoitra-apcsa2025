@@ -16,15 +16,19 @@ public class Roomba implements Directions {
         System.out.println("The average size of a pile is " + cleaner.getAveragePileSize() + " beepers.");
         System.out.println("The percentage dirty is " + cleaner.percentdirty() + "%");
        System.out.println("The location of the largest pile is (" + cleaner.largestPileX + ", " + cleaner.largestPileY + ")");
+       System.out.println("There are a total of");
+       System.out.print(cleaner.numberOfPiles);
+       System.out.print(" piles");
     }
 
     // declared here so it is visible in all the methods!
     private Robot roomba;
     private int totalBeepers = 0;
     public int totalArea = 1;
+    //made totalArea = 1 to count for the title it is on
     private int largestPile = 0;
-    public int largestPileX = 0;
-    public int largestPileY = 0;
+    public int largestPileX = 0; 
+    public int largestPileY = 0; 
     private int numberOfPiles = 0;
     private int x = 0;
     private int y = 0;
@@ -39,14 +43,14 @@ public class Roomba implements Directions {
         roomba = new Robot(26, 101, East, 0);
         x = startX;
         y = startY;
-
+// location of robot
         cleanRow();
         while (roomba.frontIsClear() || canMoveUp()) {
             moveToNextRow();
             cleanRow();
         }
     }
-
+//roomba moves with this
     private void cleanRow() {
         while (roomba.frontIsClear()) {
             cleanCell();
@@ -94,6 +98,7 @@ public class Roomba implements Directions {
             turnRight(roomba);
         }
         x = getX();
+        //activly finds x and y of greatest current pile
     }
 
     private boolean canMoveUp() {
@@ -115,7 +120,7 @@ public class Roomba implements Directions {
         roomba.turnLeft();
         roomba.turnLeft();
     }
-
+//my static for turning right
     private int getX() {
         return x;
     }
@@ -136,5 +141,6 @@ public class Roomba implements Directions {
             return 0;
         }
         return ((double) numberOfPiles / totalArea) * 100;
+        //used double so area wouldn't equal 0 at times
     }
 }
