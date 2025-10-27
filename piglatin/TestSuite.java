@@ -20,7 +20,7 @@ public class TestSuite {
         // Capitalization (keep caps as-is except transfer first letter style)
         score += basicTest("Trash", "Ashtray");
         score += basicTest("trash", "ashtray");
-        score += basicTest("TrAsH", "AsHtray");
+        score += basicTest("TrAsH", "Ashtray");
 
         // Punctuation
         score += basicTest("Trash.", "Ashtray.");

@@ -9,7 +9,7 @@ public class PigLatinTranslator {
         // Assuming Book has a method to get and set text
         String[] lines = input.getText().split("\n");
         for (String line : lines) {
-            translatedBook.addText(translate(line) + "\n");
+            translatedBook.addText(translate(replaceDashesWithSpaces(line)) + "\n");
         }
 
         return translatedBook;
@@ -30,27 +30,24 @@ public class PigLatinTranslator {
         return result.toString().trim();
     }
 
+    private static String replaceDashesWithSpaces(String input) {
+        return input.replace("-", " ");
+    }
+
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
 
         // Check for punctuation
         String punctuation = "";
-        if (!Character.isLetter(input.charAt(input.length() - 1))) {
+        if (input.length() > 0 && !Character.isLetter(input.charAt(input.length() - 1))) {
             punctuation = input.substring(input.length() - 1);
             input = input.substring(0, input.length() - 1);
         }
 
         // Preserve capitalization
-        boolean capitalize = Character.isUpperCase(input.charAt(0));
-        boolean allCaps = isAllCaps(input);
+        boolean capitalize = input.length() > 0 && Character.isUpperCase(input.charAt(0));
+        boolean allCaps = input.length() > 0 && isAllCaps(input);
         input = input.toLowerCase();
-
-        // Check for hyphenated words
-        if (input.contains("-")) {
-            String[] parts = input.split("-");
-            String translated = translateWord(parts[0]) + "-" + translateWord(parts[1]);
-            return restoreCapitalization(translated, capitalize, allCaps) + punctuation;
-        }
 
         // Translate word
         int vowelIndex = findFirstVowelIndex(input);
@@ -61,7 +58,8 @@ public class PigLatinTranslator {
             result = input.substring(vowelIndex) + input.substring(0, vowelIndex) + "ay";
         }
 
-        return restoreCapitalization(result, capitalize, allCaps) + punctuation;
+        result = restoreCapitalization(result, capitalize, allCaps) + punctuation;
+        return result;
     }
 
     private static int findFirstVowelIndex(String word) {
@@ -93,11 +91,3 @@ public class PigLatinTranslator {
         }
     }
 }
-
-
-
-
-
-
-
-
