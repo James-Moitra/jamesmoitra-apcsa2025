@@ -140,7 +140,7 @@ public class Game {
     private int score(Hand hand)
     {
         int score = 0;
-        for (int i=0; i<hand.length(); i++)
+        for (int i=0; i < hand.length(); i++)
         {
             Card card = hand.get(i);
             int value = card.getValue() + 1;
@@ -148,7 +148,7 @@ public class Game {
             {
                 value = 10;
             }
-            // TODO: deal with aces
+          
             score += value;
         }
         return score;
