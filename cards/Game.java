@@ -125,7 +125,7 @@ public class Game {
                 }
                 else {
                     dealersWins++;
-                    System.out.println("Player wins!");
+                    System.out.println("Dealer wins!");
                 }
                 printState();
                 return false;
