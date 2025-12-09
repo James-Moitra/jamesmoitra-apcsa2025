@@ -54,7 +54,7 @@ public class GameOfLife implements Board {
             for (int j = -1; j <= 1; j++) {
                 if (i == 0 && j == 0) continue;
                 count += get(x + i, y + j);
-            }j7
+            }
         }
         return count;
     }
