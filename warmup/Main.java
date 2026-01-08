@@ -8,7 +8,8 @@ public class Main {
             if( i % 3 == 0 || i % 5 == 0){
                 sum +=i;
             }
-       System.out.print(sum);
         }
+            System.out.println(sum);
+    }
 }
-}
+
