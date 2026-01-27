@@ -11,7 +11,7 @@ public class BubbleSort implements Sorter {
             for (int inner = 0; inner < input.length - outer - 1; inner++) {
                 // If the two elements are out of order, swap them.
                 if (input[inner] > (input[inner + 1])) {
-                    int temp = input[inner];
+                    int  temp = input[inner];
                     input[inner] = input[inner + 1];
                     input[inner + 1] = temp;
                 }
