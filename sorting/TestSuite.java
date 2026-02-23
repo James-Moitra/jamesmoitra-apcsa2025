@@ -1,6 +1,8 @@
+// ...existing code...
 package sorting;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class TestSuite
 {
@@ -81,5 +83,35 @@ public class TestSuite
             }
         }
         return true;
+    }
+
+    // Generate a random int array of given size with values in [min, max].
+    public static int[] generateRandomArray(int size, int min, int max) {
+        if (size <= 0) return new int[0];
+        if (min > max) { int t = min; min = max; max = t; }
+        Random rnd = new Random();
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = rnd.nextInt(max - min + 1) + min;
+        }
+        return arr;
+    }
+
+    // Optional main to run the TestSuite with a generated random array.
+    public static void main(String[] args) {
+        int size = 20;
+        int min = 0;
+        int max = 100;
+        int loops = 1000;
+
+        if (args.length >= 1) {
+            try { size = Integer.parseInt(args[0]); } catch (NumberFormatException ignored) {}
+        }
+        if (args.length >= 2) {
+            try { loops = Integer.parseInt(args[1]); } catch (NumberFormatException ignored) {}
+        }
+
+        int[] testInput = generateRandomArray(size, min, max);
+        run(testInput, loops);
     }
 }
