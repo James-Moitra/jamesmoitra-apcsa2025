@@ -13,7 +13,12 @@ public class IrregularPolygon {
     // public methods
     public void add(Point2D.Double aPoint)
     {
-        // TODO: Add a point to the IrregularPolygon.
+      for(int i =0; i < myPolygon.size(); i++){
+        if(myPolygon.get(i).equals(aPoint)){
+          return;
+        }
+      }
+      myPolygon.add(aPoint);    
     }
 
     public double perimeter() {
