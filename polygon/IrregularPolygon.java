@@ -22,7 +22,12 @@ public class IrregularPolygon {
     }
 
     public double perimeter() {
-        // TODO: Calculate the perimeter.
+for (int i = 0; i < myPolygon.size(); i++) {
+  if (i == myPolygon.size() - 1) {
+    return myPolygon.get(i).distance(myPolygon.get(0));
+    } else {
+    return myPolygon.get(i).distance(myPolygon.get(i + 1));
+    }
         return 3.14;
     }
 
